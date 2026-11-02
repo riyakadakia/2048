@@ -1,0 +1,182 @@
+/*
+ * "City Girl" theme — blush, mauve and champagne gold.
+ * Purely cosmetic: loaded after main.css and only overrides colors,
+ * fonts, shadows and decoration. Remove the <link> to restore the
+ * original look.
+ */
+
+:root {
+  --blush-bg: #fbf1f2;
+  --ink: #4a2c3a;          /* deep plum text */
+  --ink-soft: #8a6475;
+  --board: #e7c6cf;        /* dusty rose board */
+  --cell: rgba(255, 255, 255, 0.45);
+  --plum: #6b3a55;
+  --gold: #c9a063;
+  --gold-light: #ecd3a4;
+  --white: #fffafb;
+}
+
+html, body {
+  color: var(--ink);
+  font-family: "Poppins", "Clear Sans", "Helvetica Neue", Arial, sans-serif;
+}
+
+html {
+  background:
+    radial-gradient(circle at 15% 10%, rgba(255, 214, 224, 0.7), transparent 45%),
+    radial-gradient(circle at 85% 30%, rgba(236, 211, 164, 0.35), transparent 40%),
+    var(--blush-bg);
+  background-attachment: fixed;
+}
+
+body {
+  background: transparent;
+}
+
+/* Soft city skyline along the bottom of the window */
+body::before {
+  content: "";
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 180px;
+  z-index: -1;
+  pointer-events: none;
+  opacity: 0.55;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 600 180' preserveAspectRatio='none'%3E%3Cpath fill='%23f3d3dc' d='M0 180V120h30V95h20v25h25V70h12V50h6v20h12v50h30V100h40v20h20V60l20-15 20 15v60h25V90h35v30h20V40h10V20h4v20h10v80h30V85h40v35h25V75h20v-15h10v15h20v60h30V100h35v20h30V65h25v55h30V110h20v70z'/%3E%3Cpath fill='%23ebc0cc' d='M0 180v-30h45v-20h35v20h40v-35h30v35h50v-25h40v25h45v-45h25v45h40v-20h45v20h50v-30h35v30h40v-15h40v15h40v30z'/%3E%3C/svg%3E") repeat-x bottom / 600px 180px;
+}
+
+/* Title */
+h1.title {
+  font-family: "Playfair Display", Georgia, serif;
+  font-style: italic;
+  font-weight: 700;
+  color: var(--plum);
+  letter-spacing: -1px;
+}
+
+h1.title::after {
+  content: "\2726";
+  font-size: 0.3em;
+  font-style: normal;
+  vertical-align: top;
+  margin-left: 4px;
+  color: var(--gold);
+}
+
+/* Score boxes */
+.score-container, .best-container {
+  background: var(--plum);
+  color: var(--white);
+  border-radius: 14px;
+  box-shadow: 0 6px 16px rgba(107, 58, 85, 0.18);
+}
+
+.score-container:after, .best-container:after {
+  color: var(--gold-light);
+  letter-spacing: 1.5px;
+}
+
+.score-container .score-addition, .best-container .score-addition {
+  color: rgba(201, 160, 99, 0.95);
+}
+
+/* Text & links */
+a {
+  color: var(--plum);
+}
+
+strong.important {
+  color: var(--plum);
+  letter-spacing: 1px;
+}
+
+hr {
+  border-bottom: 1px solid #ead2d9;
+}
+
+.game-intro strong {
+  color: var(--plum);
+}
+
+/* Buttons */
+.restart-button,
+.game-container .game-message a {
+  background: linear-gradient(135deg, #d98ca5, #b5658a);
+  color: var(--white);
+  border-radius: 999px;
+  letter-spacing: 0.5px;
+  box-shadow: 0 4px 12px rgba(181, 101, 138, 0.3);
+  -webkit-transition: box-shadow 150ms ease, -webkit-transform 150ms ease;
+  transition: box-shadow 150ms ease, transform 150ms ease;
+}
+
+.restart-button:hover,
+.game-container .game-message a:hover {
+  box-shadow: 0 6px 18px rgba(181, 101, 138, 0.45);
+  -webkit-transform: translateY(-1px);
+  transform: translateY(-1px);
+}
+
+/* Board */
+.game-container {
+  background: var(--board);
+  border-radius: 18px;
+  box-shadow:
+    0 14px 34px rgba(107, 58, 85, 0.16),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.5);
+}
+
+.grid-cell {
+  background: var(--cell);
+  border-radius: 10px;
+}
+
+/* Tiles */
+.tile .tile-inner {
+  font-family: "Poppins", "Clear Sans", "Helvetica Neue", Arial, sans-serif;
+  font-weight: 600;
+  border-radius: 10px;
+  color: var(--ink);
+  background: var(--white);
+  box-shadow: 0 2px 6px rgba(107, 58, 85, 0.1);
+}
+
+.tile.tile-2 .tile-inner    { background: #fffafb; color: var(--ink); box-shadow: 0 2px 6px rgba(107, 58, 85, 0.1); }
+.tile.tile-4 .tile-inner    { background: #fbe4ea; color: var(--ink); box-shadow: 0 2px 6px rgba(107, 58, 85, 0.1); }
+.tile.tile-8 .tile-inner    { background: #f5c6d3; color: var(--ink); box-shadow: 0 2px 6px rgba(107, 58, 85, 0.12); }
+.tile.tile-16 .tile-inner   { background: #eda4b9; color: var(--white); box-shadow: 0 2px 8px rgba(107, 58, 85, 0.14); }
+.tile.tile-32 .tile-inner   { background: #e07f9e; color: var(--white); box-shadow: 0 2px 8px rgba(107, 58, 85, 0.16); }
+.tile.tile-64 .tile-inner   { background: #c95c83; color: var(--white); box-shadow: 0 2px 8px rgba(107, 58, 85, 0.18); }
+.tile.tile-128 .tile-inner  { background: #c4a3d4; color: var(--white); box-shadow: 0 0 18px 2px rgba(196, 163, 212, 0.45); }
+.tile.tile-256 .tile-inner  { background: #a57fbf; color: var(--white); box-shadow: 0 0 20px 3px rgba(165, 127, 191, 0.45); }
+.tile.tile-512 .tile-inner  { background: #835c9f; color: var(--white); box-shadow: 0 0 22px 4px rgba(131, 92, 159, 0.45); }
+.tile.tile-1024 .tile-inner { background: linear-gradient(135deg, #f1dcb3, #d6b07a); color: var(--plum); box-shadow: 0 0 26px 6px rgba(236, 211, 164, 0.6); }
+.tile.tile-2048 .tile-inner { background: linear-gradient(135deg, #f4c9b8, #c98b77 55%, #b7746a); color: var(--white); box-shadow: 0 0 32px 10px rgba(236, 190, 170, 0.65), inset 0 0 0 1px rgba(255, 255, 255, 0.4); }
+.tile.tile-super .tile-inner { background: linear-gradient(135deg, #4a2c3a, #2e1a25); color: var(--gold-light); box-shadow: 0 0 30px 8px rgba(201, 160, 99, 0.4); }
+
+/* Win / lose overlay */
+.game-container .game-message {
+  background: rgba(251, 241, 242, 0.75);
+  border-radius: 18px;
+  color: var(--plum);
+}
+
+.game-container .game-message p {
+  font-family: "Playfair Display", Georgia, serif;
+  font-style: italic;
+}
+
+.game-container .game-message.game-won {
+  background: rgba(236, 200, 180, 0.65);
+  color: var(--white);
+}
+
+/* Poppins runs wider than Clear Sans; keep the intro on one line beside the button */
+@media screen and (min-width: 521px) {
+  .game-intro {
+    font-size: 16px;
+  }
+}
